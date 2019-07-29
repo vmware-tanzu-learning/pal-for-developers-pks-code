@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+# A Service definition
+kind: Service
+metadata:
+  # The name of the service
+  name: moviefun-pks-load-balancer
+spec:
+  # Pods that this service routes to.
+  selector:
+    # Labeled with app=moviefun-pks
+    app: moviefun-pks
+  # The type of service.
+  type: LoadBalancer
+  # The ports the LoadBalancer exposes.
+  ports:
+  # There is only 1 TCP port (80) that is connected to the container
+  # port of 8080
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+
