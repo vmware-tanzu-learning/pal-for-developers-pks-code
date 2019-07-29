@@ -1,0 +1,22 @@
+spring:
+  jpa:
+    generate-ddl: true
+    properties.hibernate.dialect: org.hibernate.dialect.H2Dialect
+
+  datasource:
+    url: jdbc:h2:mem:struts;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+
+  mvc.view:
+    prefix: /WEB-INF/
+    suffix: .jsp
+
+  h2:
+    console:
+      enabled: true
+
+moviefun:
+  storage:
+    directory: /var/albumCovers
