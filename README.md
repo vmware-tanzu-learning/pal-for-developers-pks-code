@@ -7,3 +7,5 @@ The solution branch has the final manifests.
 ## Moviefun source Directory.
 The `moviefun` directory contains the source code for the moviefun 
 application.
+
+[Moviefun build instructions](moviefun/README.md)
