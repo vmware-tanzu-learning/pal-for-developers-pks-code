@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moviefun-pks-v3
+  labels:
+    app: moviefun-pks
+    version: v3.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moviefun-pks
+      version: v3.0
+  template:
+    metadata:
+      labels:
+        app: moviefun-pks
+        version: v3.0
+    spec:
+      containers:
+        - name: moviefun-pks
+          image: pivotaleducation/moviefun-pks:3.0
+          imagePullPolicy: Always
+          env:
+            - name: MOVIEFUN_TITLE
+              value: "MyMovieFun"
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: 600m
