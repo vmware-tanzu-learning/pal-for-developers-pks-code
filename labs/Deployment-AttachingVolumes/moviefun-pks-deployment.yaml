@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: moviefun-pks
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: moviefun-pks
@@ -13,10 +13,6 @@ spec:
       labels:
         app: moviefun-pks
     spec:
-      volumes:
-        - name: album-covers-disk
-          persistentVolumeClaim:
-            claimName: moviefun-pks-claim
       containers:
         - name: moviefun-pks
           image: pivotaleducation/moviefun-pks:2.0
@@ -34,3 +30,7 @@ spec:
           volumeMounts:
             - mountPath: "/var/albumCovers"
               name: album-covers-disk
+      volumes:
+        - name: album-covers-disk
+          persistentVolumeClaim:
+            claimName: moviefun-pks-claim

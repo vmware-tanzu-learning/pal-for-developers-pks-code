@@ -13,10 +13,6 @@ spec:
       labels:
         app: moviefun-pks
     spec:
-      volumes:
-        - name: album-covers-disk
-          persistentVolumeClaim:
-            claimName: moviefun-pks-claim
       containers:
         - name: moviefun-pks
           image: pivotaleducation/moviefun-pks:2.0
@@ -26,6 +22,3 @@ spec:
           resources:
             limits:
               cpu: 800m
-          volumeMounts:
-            - mountPath: "/var/albumCovers"
-              name: album-covers-disk
