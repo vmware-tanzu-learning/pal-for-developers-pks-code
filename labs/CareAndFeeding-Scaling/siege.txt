@@ -1,0 +1,4 @@
+http://<external url for load balancer>/load/cpu/100
+http://<external url for load balancer>/load/cpu/spin/20
+http://<external url for load balancer>/load/cpu/100
+http://<external url for load balancer>/load/cpu/spin/20

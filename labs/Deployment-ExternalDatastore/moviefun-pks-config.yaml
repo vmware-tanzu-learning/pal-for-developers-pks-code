@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: moviefun-pks-config
+data:
+  spring.datasource.url: jdbc:postgresql://<ElephantSQL server>:5432/<ElephantSQL User>
+  spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.PostgreSQL95Dialect
+  spring.datasource.driverClassName: org.postgresql.Driver
+  spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation: "true"

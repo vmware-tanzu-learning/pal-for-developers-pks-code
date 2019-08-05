@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moviefun-pks
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: moviefun-pks
+  template:
+    metadata:
+      labels:
+        app: moviefun-pks
+    spec:
+      volumes:
+        - name: album-covers-disk
+          persistentVolumeClaim:
+            claimName: moviefun-pks-claim
+      containers:
+        - name: moviefun-pks
+          image: pivotaleducation/moviefun-pks:2.0
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: moviefun-pks-config
+            - secretRef:
+                name: moviefun-pks-secret
+          env:
+            - name: MOVIEFUN_TITLE
+              value: "MovieFunWithExternalDatastore"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: "/var/albumCovers"
+              name: album-covers-disk

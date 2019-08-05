@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: moviefun-pks
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: moviefun-pks
@@ -19,6 +19,9 @@ spec:
         imagePullPolicy: Always
         ports:
           - containerPort: 8080
-        envFrom:
-          - configMapRef:
-              name: moviefun-pks-config
+        env:
+          - name: MOVIEFUN_TITLE
+            valueFrom:
+              configMapKeyRef:
+                name: moviefun-pks-config
+                key: MOVIEFUN_TITLE_NAME_IN_CONFIG_MAP
