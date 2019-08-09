@@ -1,14 +1,14 @@
 ---
-kind: PersistentVolumeClaim
 apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
-  name: moviefun-pks-claim
-  annotations:
-    # specifically request the thin storage class
-    volume.beta.kubernetes.io/storage-class: thin
+  name: moviefun-pks-pvc
+  labels:
+    app: moviefun-pks
 spec:
+  storageClassName: moviefun-pks-sc
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       # request 1 Gig of storage

@@ -1,0 +1,10 @@
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-sc
+# an IaaS specfic way to create the storage
+provisioner: kubernetes.io/vsphere-volume
+parameters:
+  # a vSphere specific format for this storage
+  diskformat: thin
