@@ -33,4 +33,4 @@ spec:
       volumes:
         - name: album-covers-disk
           persistentVolumeClaim:
-            claimName: moviefun-pks-claim
+            claimName: moviefun-pks-pvc
