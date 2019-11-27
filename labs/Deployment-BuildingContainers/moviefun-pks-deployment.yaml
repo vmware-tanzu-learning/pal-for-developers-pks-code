@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+# Create a Deployment object
+kind: Deployment
+metadata:
+  # The name of the deployment
+  name: moviefun-pks
+spec: # Start of the ReplicaSet definition
+  # How many replicated pods
+  replicas: 1
+  # Determines what pods are managed by this ReplicaSet
+  selector:
+    matchLabels:
+      # In this case any pod app=moviefun-pks
+      app: moviefun-pks
+  template: # Start of the Pod definition
+    metadata:
+      # Assigns labels for the pods
+      labels:
+        # app=moviefun-pks matches the above matchLabels
+        app: moviefun-pks
+    spec:
+      # The containers to run inside the pod. In this case only one.
+      containers:
+      # The name of the container
+      - name: moviefun-pks
+        # The docker image to run
+        image: <DOCKER_IMAGE_NAME>
+        imagePullPolicy: Always
+        # The ports to expose from the container
+        ports:
+        - containerPort: 8080
+
