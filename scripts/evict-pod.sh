@@ -2,22 +2,17 @@
 
 set -e
 
-usage="Usage: $0 POD_ID [NAMESPACE] [API_URL]"
+usage="Usage: $0 POD_ID [API_URL]"
 
 pod_id="$1"
-namespace="$2"
-api_url="$3"
-
-if [[ -z "$namespace" ]]; then
-    namespace=$(kubectl config view --minify --output 'jsonpath={..namespace}')
-    namespace="${namespace:-default}"
-fi
+namespace=$(kubectl config view --minify --output 'jsonpath={..namespace}')
+api_url="$PAL_KC_API"
 
 api_url="${api_url:-127.0.0.1:8001}"
+namespace="${namespace:-pkspal}"
 
 if [[ -z "$pod_id" ]]; then
     echo $usage
-    exit 1
 fi
 
 echo "Attempting to evict pod $pod_id from namespace $namespace, api_url=$api_url"
